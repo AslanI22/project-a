@@ -3,8 +3,7 @@
 from models import Task
 from utils import format_task
 
-# Импорт из установленного пакета project-b-utils
-from project_b_utils import get_current_date, reverse_string
+from project_b_utils import get_current_date, reverse_string, to_upper
 
 
 def main():
@@ -18,6 +17,7 @@ def main():
     print()
     print(f"Сегодня: {get_current_date()}")
     print(f"Реверс: {reverse_string('Task Manager')}")
+    print(f"Верхний регистр: {to_upper('project b v1.0.1')}")
 
 
 if __name__ == "__main__":
