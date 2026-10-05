@@ -1,0 +1,27 @@
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Виртуальное окружение
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Тесты
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Сборка
+build/
+dist/
+*.egg-info/
+
+# Логи
+*.log
