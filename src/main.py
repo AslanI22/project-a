@@ -3,8 +3,8 @@
 from models import Task
 from utils import format_task
 
-# Импорт из подмодуля project-b
-from module_loader import get_current_date, reverse_string
+# Импорт из установленного пакета project-b-utils
+from project_b_utils import get_current_date, reverse_string
 
 
 def main():

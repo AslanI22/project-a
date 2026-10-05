@@ -1,1 +1,3 @@
 # Зависимости Project A
+# Локальный пакет project-b (editable install)
+-e ../project-b
