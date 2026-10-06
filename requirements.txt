@@ -1,3 +1,5 @@
 # Зависимости Project A
 # Локальный пакет project-b (editable install)
 -e ../project-b
+flask==3.0.3
+pytest==8.3.3

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Task Manager{% endblock %}
+
+{% block content %}
+<h1>Task Manager</h1>
+<p>Сегодня: <b>{{ today }}</b> ({{ today_formatted }})</p>
+
+<div class="card stats">
+    <div class="stat"><b>{{ stats.total }}</b>Всего</div>
+    <div class="stat"><b>{{ stats.done }}</b>Выполнено</div>
+    <div class="stat"><b>{{ stats.overdue }}</b>Просрочено</div>
+</div>
+
+<div class="card">
+    <h3>Добавить задачу</h3>
+    <form method="post" action="{{ url_for('add_task') }}">
+        <input type="text" name="title" placeholder="Название" required>
+        <input type="date" name="due_date">
+        <select name="priority">
+            <option value="1">Высокий</option>
+            <option value="2">Средний</option>
+            <option value="3" selected>Низкий</option>
+        </select>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Задачи</h3>
+    <table>
+        <tr><th>ID</th><th>Название</th><th>Приоритет</th><th>Дедлайн</th><th></th></tr>
+        {% for t in tasks %}
+        <tr>
+            <td>{{ t.id }}</td>
+            <td class="{% if t.done %}done{% endif %}">{{ t.title }}</td>
+            <td>{{ t.priority }}</td>
+            <td>{{ t.due_date or '—' }}</td>
+            <td><a href="{{ url_for('toggle_task', task_id=t.id) }}">{% if t.done %}↩{% else %}✓{% endif %}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

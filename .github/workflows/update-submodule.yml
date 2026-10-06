@@ -1,0 +1,25 @@
+name: Update submodule
+
+on:
+  repository_dispatch:
+    types: [ submodule-update ]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Update submodule
+        run: |
+          cd libs/project-b
+          git fetch origin
+          git checkout origin/main
+          cd ../..
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "ci: auto-update submodule project-b" || echo "No changes"
+          git push

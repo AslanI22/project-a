@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Инструменты project-b{% endblock %}
+
+{% block content %}
+<h1>Инструменты из project-b</h1>
+
+<div class="card">
+    <form method="post">
+        <input type="text" name="text" placeholder="Введите текст" style="width: 60%;" required>
+        <button type="submit">Обработать</button>
+    </form>
+</div>
+
+{% if result %}
+<div class="card">
+    <h3>Результат</h3>
+    <table>
+        <tr><th>Операция</th><th>Результат</th></tr>
+        <tr><td>Оригинал</td><td>{{ result.original }}</td></tr>
+        <tr><td>Реверс</td><td>{{ result.reversed }}</td></tr>
+        <tr><td>Верхний регистр</td><td>{{ result.upper }}</td></tr>
+        <tr><td>Слов</td><td>{{ result.words }}</td></tr>
+    </table>
+</div>
+{% endif %}
+{% endblock %}
